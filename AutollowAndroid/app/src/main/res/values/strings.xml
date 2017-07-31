@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Autollow</string>
+    <string name="ref_vehicles_key">vehicles</string>
+    <string name="txt_id_number">Identification Number</string>
+    <string name="txt_license_plate">License Plate</string>
+
+    <string name="select">Select</string>
+    <string name="personId">Citizen ID</string>
+    <string name="companyId">Company ID</string>
+    <string name="selectVal" />
+    <string name="personIdVal">C</string>
+    <string name="companyIdVal">N</string>
+    <string name="txt_add_vehicle_title">Add Vehicle</string>
+    <string name="txt_doc_type">Document Type</string>
+    <string name="error_plate_required">License plate is required</string>
+    <string name="error_type_required">Select a document type</string>
+    <string name="error_number_required">Number is required</string>
+    <string name="ref_vehicles_user_key">vehiclesPerUser</string>
+    <string name="ref_vehicle_doc_key">vehicleDocuments</string>
+
+</resources>

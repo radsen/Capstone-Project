@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "81321560903",
+    "firebase_url": "https://autollow.firebaseio.com",
+    "project_id": "autollow",
+    "storage_bucket": "autollow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81321560903:android:da6c0123a3b63914",
+        "android_client_info": {
+          "package_name": "com.autollow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81321560903-senq3hvop11r0hpspro92leuajbjpguo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autollow",
+            "certificate_hash": "a7347bc6311a172b93c3fcca686e0b0c527765a2"
+          }
+        },
+        {
+          "client_id": "81321560903-f510fh6ovdr323cn87bakdcs8lrf8vth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHOj6g0T5WXgg-xfSEKVKEA4yfERRTZY8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81321560903-f510fh6ovdr323cn87bakdcs8lrf8vth.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
