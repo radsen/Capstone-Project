@@ -1,9 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:layout_margin="@dimen/activity_horizontal_margin"
-    app:cardBackgroundColor="@android:color/holo_purple">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_horizontal_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardview_default_margin">
+
+        <TextView
+            android:id="@+id/tv_insurance_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            android:textIsSelectable="false"
+            android:textStyle="bold"
+            tools:text="Insurance Name" />
+
+        <TextView
+            android:id="@+id/lbl_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_below="@id/tv_insurance_name"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:paddingBottom="@dimen/text_vertical_padding"
+            android:text="@string/txt_number" />
+
+        <TextView
+            android:id="@+id/tv_insurance_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_insurance_name"
+            android:layout_toEndOf="@id/lbl_number"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:paddingStart="@dimen/text_horizontal_padding"
+            android:paddingEnd="@dimen/text_horizontal_padding"
+            android:paddingBottom="@dimen/text_vertical_padding"
+            tools:text="2114117016088" />
+
+        <TextView
+            android:id="@+id/lbl_issued_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_insurance_number"
+            android:textStyle="bold"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            android:text="@string/txt_issue_date" />
+
+        <TextView
+            android:id="@+id/tv_issued_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lbl_issued_date"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:paddingBottom="@dimen/text_vertical_padding"
+            tools:text="12/05/2017" />
+
+        <TextView
+            android:id="@+id/lbl_valid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_issued_date"
+            android:textStyle="bold"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            android:text="@string/txt_valid" />
+
+        <TextView
+            android:id="@+id/lbl_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lbl_valid"
+            android:textStyle="bold"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:text="@string/txt_from" />
+
+        <TextView
+            android:id="@+id/tv_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lbl_valid"
+            android:layout_toEndOf="@id/lbl_from"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:paddingStart="@dimen/text_horizontal_padding"
+            android:paddingEnd="@dimen/text_horizontal_padding"
+            tools:text="16/05/2017" />
+
+        <TextView
+            android:id="@+id/lbl_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lbl_valid"
+            android:layout_toEndOf="@id/tv_start_date"
+            android:textStyle="bold"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:text="@string/txt_to" />
+
+        <TextView
+            android:id="@+id/tv_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lbl_valid"
+            android:layout_toEndOf="@id/lbl_to"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:paddingStart="@dimen/text_horizontal_padding"
+            android:paddingEnd="@dimen/text_horizontal_padding"
+            tools:text="15/05/2018" />
+
+    </RelativeLayout>
+
+
 </android.support.v7.widget.CardView>

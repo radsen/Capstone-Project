@@ -36,7 +36,7 @@
             android:id="@+id/picture"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            tool:src="@drawable/ic_default" />
+            tool:src="@drawable/ic_camera" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                tool:src="@android:drawable/ic_menu_edit" />
+                android:src="@android:drawable/ic_menu_edit" />
 
         </RelativeLayout>
 

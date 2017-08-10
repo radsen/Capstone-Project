@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Autollow</string>
-    <string name="ref_vehicles_key">vehicles</string>
     <string name="txt_id_number">Identification Number</string>
     <string name="txt_license_plate">License Plate</string>
 
@@ -10,12 +9,30 @@
     <string name="selectVal" />
     <string name="personIdVal">C</string>
     <string name="companyIdVal">N</string>
-    <string name="txt_add_vehicle_title">Add Vehicle</string>
-    <string name="txt_doc_type">Document Type</string>
+
     <string name="error_plate_required">License plate is required</string>
     <string name="error_type_required">Select a document type</string>
     <string name="error_number_required">Number is required</string>
+
+    <string name="ref_vehicles_key">vehicles</string>
     <string name="ref_vehicles_user_key">vehiclesPerUser</string>
     <string name="ref_vehicle_doc_key">vehicleDocuments</string>
+
+    <string name="txt_add_vehicle_title">Add Vehicle</string>
+    <string name="txt_doc_type">Document Type</string>
+    <string name="txt_issue_date">Issued Date</string>
+    <string name="txt_valid">Valid</string>
+    <string name="txt_year">Year</string>
+    <string name="txt_month">Month</string>
+    <string name="txt_day">Day</string>
+    <string name="txt_from">From</string>
+    <string name="txt_to">To</string>
+    <string name="format_date">dd/MM/yyyy</string>
+    <string name="txt_number">No.</string>
+    <string name="txt_exp_date">Expiration Date</string>
+    <string name="txt_manufacturer">Brand</string>
+    <string name="txt_model">Model</string>
+    <string name="txt_fuel_type">Fuel Type</string>
+    <string name="txt_service_type">Service Type</string>
 
 </resources>

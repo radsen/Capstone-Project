@@ -5,6 +5,5 @@ package com.autollow.common;
  */
 
 public interface IConstants {
-    String REGISTRATION_KEY = "com.autollow.vehicle.reg.key";
     String VEHICLE_ID_KEY = "com.autollow.vehicle.key";
 }

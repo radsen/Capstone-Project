@@ -14,7 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.autollow.R;
-import com.autollow.activity.DocumentActivity;
+import com.autollow.activity.CardActivity;
+import com.autollow.activity.VehicleInfoActivity;
 import com.autollow.adapter.VehicleAdapter;
 import com.autollow.common.IConstants;
 import com.autollow.model.Registration;
@@ -171,7 +172,14 @@ public class MainFragment extends BaseFragment implements ChildEventListener,
 
     @Override
     public void onClick(Registration registration, int position) {
-        Intent intent = new Intent(getContext(), DocumentActivity.class);
+        Intent intent = new Intent(getContext(), CardActivity.class);
+        intent.putExtra(VEHICLE_ID_KEY, keys.get(position));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onEditClicked(int position) {
+        Intent intent = new Intent(getContext(), VehicleInfoActivity.class);
         intent.putExtra(VEHICLE_ID_KEY, keys.get(position));
         startActivity(intent);
     }

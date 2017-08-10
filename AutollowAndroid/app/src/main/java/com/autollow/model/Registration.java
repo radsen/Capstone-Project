@@ -16,6 +16,7 @@ public class Registration implements Parcelable {
     private String lPlate;
     private String idType;
     private String idNumber;
+    private String picture;
 
     public Registration() {}
 
@@ -27,6 +28,7 @@ public class Registration implements Parcelable {
         lPlate = in.readString();
         idType = in.readString();
         idNumber = in.readString();
+        picture = in.readString();
     }
 
     public static final Creator<Registration> CREATOR = new Creator<Registration>() {
@@ -111,5 +113,14 @@ public class Registration implements Parcelable {
         dest.writeString(lPlate);
         dest.writeString(idType);
         dest.writeString(idNumber);
+        dest.writeString(picture);
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

@@ -13,7 +13,7 @@ import com.autollow.R;
 import com.autollow.adapter.CardAdapter;
 import com.autollow.common.IConstants;
 import com.autollow.model.Document;
-import com.autollow.model.Registration;
+import com.autollow.model.DocumentFactory;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -98,8 +98,12 @@ public class CardFragment extends BaseFragment implements ChildEventListener, IC
 
     @Override
     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-        Document document = dataSnapshot.getValue(Document.class);
-        mCardAdapter.add(document);
+        String type = dataSnapshot.child("type").getValue().toString();
+        Class objectClass = DocumentFactory.getDocument(type);
+        Document document = (Document) dataSnapshot.getValue(objectClass);
+        if(document.isRequired()){
+            mCardAdapter.add(document);
+        }
     }
 
     @Override

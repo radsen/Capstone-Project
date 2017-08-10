@@ -5,11 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.autollow.R;
 import com.autollow.model.Registration;
+import com.autollow.util.BindingUtils;
 
 import java.util.List;
 
@@ -30,6 +32,12 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
 
     public interface VehicleClickListener {
         void onClick(Registration registration, int position);
+
+        void onEditClicked(int position);
+    }
+
+    public interface VehicleInfoListener {
+        void onClick(Registration registration, int position);
     }
 
     public VehicleAdapter(Context context, List<Registration> vehicleList){
@@ -49,8 +57,14 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
         final Registration registration = mVehicleList.get(position);
         holder.brandTextView.setText(registration.getBrand());
         holder.modelTextView.setText(registration.getModel());
-        holder.pictureImageView.setImageResource(R.drawable.ic_default);
+        BindingUtils.loadImage(holder.pictureImageView, registration.getPicture());
         holder.licensePlateTextView.setText(registration.getLicensePlate());
+        holder.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mItemClickListener.onEditClicked(position);
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +105,9 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
 
         @BindView(R.id.model)
         TextView modelTextView;
+
+        @BindView(R.id.btn_edit)
+        ImageButton editButton;
 
         public ViewHolder(View itemView) {
             super(itemView);

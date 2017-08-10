@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.DocumentActivity"/>
+        <activity android:name=".activity.CardActivity"/>
+
+        <activity android:name=".activity.VehicleInfoActivity"/>
+
     </application>
 
 </manifest>

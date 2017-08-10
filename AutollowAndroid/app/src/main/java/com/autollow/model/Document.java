@@ -5,9 +5,14 @@ package com.autollow.model;
  */
 
 public class Document {
+
+    public static final int INSURANCE = 1;
+    public static final int EMISSIONS = 2;
+
     private String desc;
     private String type;
     private String number;
+    private boolean required = true;
 
     public String getDesc() {
         return desc;
@@ -31,5 +36,13 @@ public class Document {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public boolean isRequired() {
+        return required;
+    }
+
+    public void setRequired(boolean required) {
+        this.required = required;
     }
 }

@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:layout_margin="@dimen/activity_horizontal_margin"
-    app:cardBackgroundColor="@android:color/holo_green_dark">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_horizontal_margin">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardview_default_margin"
+        android:stretchColumns="*">
+
+        <TableRow>
+            <TextView
+                android:id="@+id/tv_emission_title"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:textIsSelectable="false"
+                android:textStyle="bold"
+                tools:text="Emissions"
+                android:layout_span="2"/>
+        </TableRow>
+
+        <TableRow>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:text="@string/txt_issue_date" />
+
+                <TextView
+                    android:id="@+id/tv_issued_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    tools:text="25/07/2017"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:text="@string/txt_exp_date"/>
+
+                <TextView
+                    android:id="@+id/tv_expiration_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    tools:text="25/07/2018"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:textStyle="bold"
+                    android:text="@string/txt_number"/>
+
+                <TextView
+                    android:id="@+id/tv_emissions_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                    tools:text="131649113"/>
+
+            </LinearLayout>
+        </TableRow>
+
+
+
+    </TableLayout>
+
 </android.support.v7.widget.CardView>
