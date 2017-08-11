@@ -17,6 +17,9 @@ public class Registration implements Parcelable {
     private String idType;
     private String idNumber;
     private String picture;
+    private int service_type;
+    private int fuel_type;
+    private int vehicle_type;
 
     public Registration() {}
 
@@ -29,6 +32,9 @@ public class Registration implements Parcelable {
         idType = in.readString();
         idNumber = in.readString();
         picture = in.readString();
+        service_type = in.readInt();
+        fuel_type = in.readInt();
+        vehicle_type = in.readInt();
     }
 
     public static final Creator<Registration> CREATOR = new Creator<Registration>() {
@@ -114,6 +120,9 @@ public class Registration implements Parcelable {
         dest.writeString(idType);
         dest.writeString(idNumber);
         dest.writeString(picture);
+        dest.writeInt(service_type);
+        dest.writeInt(fuel_type);
+        dest.writeInt(vehicle_type);
     }
 
     public String getPicture() {
@@ -122,5 +131,29 @@ public class Registration implements Parcelable {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public void setServiceType(int serviceType) {
+        this.service_type = serviceType;
+    }
+
+    public int getServiceType() {
+        return service_type;
+    }
+
+    public void setFuelType(int fuelType) {
+        this.fuel_type = fuelType;
+    }
+
+    public int getFuelType() {
+        return fuel_type;
+    }
+
+    public void setVehicleType(int vehicleType) {
+        this.vehicle_type = vehicleType;
+    }
+
+    public int getVehicleType() {
+        return vehicle_type;
     }
 }

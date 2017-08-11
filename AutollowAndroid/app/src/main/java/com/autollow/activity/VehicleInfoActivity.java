@@ -1,5 +1,6 @@
 package com.autollow.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import com.autollow.R;
@@ -23,4 +24,5 @@ public class VehicleInfoActivity extends BaseActivity {
             attachToActivity(R.id.master, vehicleInfoFragment, VehicleInfoFragment.TAG);
         }
     }
+
 }

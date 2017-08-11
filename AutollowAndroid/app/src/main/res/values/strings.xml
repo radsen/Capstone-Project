@@ -18,6 +18,16 @@
     <string name="ref_vehicles_user_key">vehiclesPerUser</string>
     <string name="ref_vehicle_doc_key">vehicleDocuments</string>
 
+    <string name="item_array_default">Select</string>
+    <string name="item_array_automobile">Automobile</string>
+    <string name="item_array_motorcycle">Motorcycle</string>
+    <string name="item_array_gas">Gas</string>
+    <string name="item_array_diesel">Diesel</string>
+    <string name="item_array_natural_gas">Natural Gas</string>
+    <string name="item_array_electric">Electric</string>
+    <string name="item_array_individual">Personal</string>
+    <string name="item_array_public">Public</string>
+
     <string name="txt_add_vehicle_title">Add Vehicle</string>
     <string name="txt_doc_type">Document Type</string>
     <string name="txt_issue_date">Issued Date</string>
@@ -34,5 +44,7 @@
     <string name="txt_model">Model</string>
     <string name="txt_fuel_type">Fuel Type</string>
     <string name="txt_service_type">Service Type</string>
+    <string name="txt_vehicle_type">Vehicle</string>
+    <string name="txt_take_picture">Take a picture</string>
 
 </resources>

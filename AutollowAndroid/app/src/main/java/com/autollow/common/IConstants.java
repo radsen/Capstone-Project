@@ -6,4 +6,6 @@ package com.autollow.common;
 
 public interface IConstants {
     String VEHICLE_ID_KEY = "com.autollow.vehicle.key";
+
+    int IMAGE_PICKER_INTENT = 1000;
 }

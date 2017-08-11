@@ -13,4 +13,24 @@
         <item>@string/companyIdVal</item>
     </string-array>
 
+    <string-array name="vehicle_type_array">
+        <item>@string/item_array_default</item>
+        <item>@string/item_array_automobile</item>
+        <item>@string/item_array_motorcycle</item>
+    </string-array>
+
+    <string-array name="fuel_type_array">
+        <item>@string/item_array_default</item>
+        <item>@string/item_array_gas</item>
+        <item>@string/item_array_diesel</item>
+        <item>@string/item_array_natural_gas</item>
+        <item>@string/item_array_electric</item>
+    </string-array>
+
+    <string-array name="service_type_array">
+        <item>@string/item_array_default</item>
+        <item>@string/item_array_individual</item>
+        <item>@string/item_array_public</item>
+    </string-array>
+
 </resources>
