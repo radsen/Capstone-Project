@@ -12,10 +12,10 @@ public class Registration implements Parcelable {
     private String color;
     private String brand;
     private String model;
-    private String regDate;
-    private String lPlate;
-    private String idType;
-    private String idNumber;
+    private String reg_date;
+    private String license_plate;
+    private String id_type;
+    private String id_number;
     private String picture;
     private int service_type;
     private int fuel_type;
@@ -27,10 +27,10 @@ public class Registration implements Parcelable {
         color = in.readString();
         brand = in.readString();
         model = in.readString();
-        regDate = in.readString();
-        lPlate = in.readString();
-        idType = in.readString();
-        idNumber = in.readString();
+        reg_date = in.readString();
+        license_plate = in.readString();
+        id_type = in.readString();
+        id_number = in.readString();
         picture = in.readString();
         service_type = in.readInt();
         fuel_type = in.readInt();
@@ -74,35 +74,35 @@ public class Registration implements Parcelable {
     }
 
     public String getRegistrationDate() {
-        return regDate;
+        return reg_date;
     }
 
     public void setRegistrationDate(String regDate) {
-        this.regDate = regDate;
+        this.reg_date = regDate;
     }
 
     public String getLicensePlate() {
-        return lPlate;
+        return license_plate;
     }
 
     public void setLicensePlate(String lPlate) {
-        this.lPlate = lPlate;
+        this.license_plate = lPlate;
     }
 
     public String getIdType() {
-        return idType;
+        return id_type;
     }
 
     public void setIdType(String idType) {
-        this.idType = idType;
+        this.id_type = idType;
     }
 
     public String getIdNumber() {
-        return idNumber;
+        return id_number;
     }
 
     public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
+        this.id_number = idNumber;
     }
 
     @Override
@@ -115,10 +115,10 @@ public class Registration implements Parcelable {
         dest.writeString(color);
         dest.writeString(brand);
         dest.writeString(model);
-        dest.writeString(regDate);
-        dest.writeString(lPlate);
-        dest.writeString(idType);
-        dest.writeString(idNumber);
+        dest.writeString(reg_date);
+        dest.writeString(license_plate);
+        dest.writeString(id_type);
+        dest.writeString(id_number);
         dest.writeString(picture);
         dest.writeInt(service_type);
         dest.writeInt(fuel_type);
@@ -157,3 +157,4 @@ public class Registration implements Parcelable {
         return vehicle_type;
     }
 }
+

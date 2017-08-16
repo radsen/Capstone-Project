@@ -65,6 +65,7 @@ public class CardFragment extends BaseFragment implements ChildEventListener, IC
         String vehicleId = getArguments().getString(VEHICLE_ID_KEY);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
+//        mFirebaseDatabase.setPersistenceEnabled(true);
         Uri vehicleDocsUri = new Uri.Builder()
                 .appendPath(getString(R.string.ref_vehicle_doc_key))
                 .appendPath(vehicleId)

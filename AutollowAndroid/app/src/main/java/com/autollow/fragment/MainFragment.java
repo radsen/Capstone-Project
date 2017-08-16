@@ -73,6 +73,7 @@ public class MainFragment extends BaseFragment implements ChildEventListener,
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
+//        mFirebaseDatabase.setPersistenceEnabled(true);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         if(mFirebaseAuth.getCurrentUser() != null){

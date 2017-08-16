@@ -1,11 +1,9 @@
 package com.autollow.fragment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,14 +19,22 @@ import com.autollow.R;
 import com.autollow.adapter.SpinnerAdapter;
 import com.autollow.common.IConstants;
 import com.autollow.model.Registration;
+import com.autollow.util.BindingUtils;
+import com.autollow.util.UriProvider;
 import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.model.Image;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +57,10 @@ public class VehicleInfoFragment extends BaseFragment implements IConstants, Val
     private Unbinder unbinder;
 
     private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseStorage mFirebaseStorage;
+
     private DatabaseReference mVehiclesRef;
+    private StorageReference mVehicleStorageReference;
 
     @BindView(R.id.imageView)
     ImageView pictureImageView;
@@ -101,6 +110,8 @@ public class VehicleInfoFragment extends BaseFragment implements IConstants, Val
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
+//        mFirebaseDatabase.setPersistenceEnabled(true);
+        mFirebaseStorage = FirebaseStorage.getInstance();
 
         pictureButton.setOnClickListener(this);
 
@@ -128,6 +139,9 @@ public class VehicleInfoFragment extends BaseFragment implements IConstants, Val
                 .appendPath(vehicleId)
                 .build();
         mVehiclesRef = mFirebaseDatabase.getReference().child(vehiclesUri.toString());
+
+        mVehicleStorageReference = mFirebaseStorage.getReference()
+                .child(getString(R.string.ref_vehicle_storage_key));
     }
 
     @Override
@@ -158,6 +172,7 @@ public class VehicleInfoFragment extends BaseFragment implements IConstants, Val
     public void onDataChange(DataSnapshot dataSnapshot) {
         registration = dataSnapshot.getValue(Registration.class);
 
+        BindingUtils.loadImage(pictureImageView, registration.getPicture());
         brandTextView.setText(registration.getBrand());
         modelTextView.setText(registration.getModel());
         licensePlateTextView.setText(registration.getLicensePlate());
@@ -180,13 +195,13 @@ public class VehicleInfoFragment extends BaseFragment implements IConstants, Val
 
         switch (parent.getId()){
             case R.id.spr_vehicle_type:
-                childUpdates.put("/vehicle_type", position);
+                childUpdates.put("/vehicleType", position);
                 break;
             case R.id.spr_fuel_type:
-                childUpdates.put("/fuel_type", position);
+                childUpdates.put("/fuelType", position);
                 break;
             case R.id.spr_service_type:
-                childUpdates.put("/service_type", position);
+                childUpdates.put("/serviceType", position);
                 break;
         }
 
@@ -215,8 +230,30 @@ public class VehicleInfoFragment extends BaseFragment implements IConstants, Val
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == IMAGE_PICKER_INTENT && resultCode == RESULT_OK && data != null) {
             ArrayList<Image> images = (ArrayList<Image>) ImagePicker.getImages(data);
-            Bitmap bitmap = BitmapFactory.decodeFile(images.get(0).getPath());
-            pictureImageView.setImageBitmap(bitmap);
+            String path = images.get(0).getPath();
+            Uri contentUri = UriProvider.getImageContentUri(getContext(), new File(path));
+
+            StorageReference photoRef = mVehicleStorageReference
+                    .child(contentUri.getLastPathSegment());
+
+            photoRef.putFile(contentUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            if(!childUpdates.isEmpty()){
+                                childUpdates.clear();
+                            }
+                            childUpdates.put("/picture", downloadUrl.toString());
+                            mVehiclesRef.updateChildren(childUpdates);
+                            BindingUtils.loadImage(pictureImageView, downloadUrl.toString());
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(TAG, e.getMessage());
+                }
+            });
         }
     }
 }
