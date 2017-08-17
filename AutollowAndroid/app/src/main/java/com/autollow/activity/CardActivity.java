@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.autollow.R;
+import com.autollow.base.BaseActivity;
 import com.autollow.common.IConstants;
 import com.autollow.fragment.CardFragment;
 

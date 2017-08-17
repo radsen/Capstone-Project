@@ -1,4 +1,4 @@
-package com.autollow.activity;
+package com.autollow.base;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,7 +27,6 @@ public class BaseActivity extends AppCompatActivity implements FirebaseAuth.Auth
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_autollow);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
     }

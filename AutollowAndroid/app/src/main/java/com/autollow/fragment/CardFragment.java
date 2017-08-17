@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.autollow.R;
 import com.autollow.adapter.CardAdapter;
+import com.autollow.base.BaseFragment;
 import com.autollow.common.IConstants;
 import com.autollow.model.Document;
 import com.autollow.model.DocumentFactory;

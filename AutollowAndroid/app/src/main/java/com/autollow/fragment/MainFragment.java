@@ -17,6 +17,7 @@ import com.autollow.R;
 import com.autollow.activity.CardActivity;
 import com.autollow.activity.VehicleInfoActivity;
 import com.autollow.adapter.VehicleAdapter;
+import com.autollow.base.BaseFragment;
 import com.autollow.common.IConstants;
 import com.autollow.model.Registration;
 import com.google.firebase.auth.FirebaseAuth;

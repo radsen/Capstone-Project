@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.autollow.R;
 import com.autollow.adapter.SpinnerAdapter;
+import com.autollow.base.BaseFragment;
 import com.autollow.common.IConstants;
 import com.autollow.model.Registration;
 import com.autollow.util.BindingUtils;

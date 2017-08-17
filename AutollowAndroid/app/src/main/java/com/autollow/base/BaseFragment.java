@@ -1,4 +1,4 @@
-package com.autollow.fragment;
+package com.autollow.base;
 
 import android.support.v4.app.Fragment;
 

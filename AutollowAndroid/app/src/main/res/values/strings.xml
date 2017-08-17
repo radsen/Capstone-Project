@@ -47,5 +47,9 @@
     <string name="txt_vehicle_type">Vehicle</string>
     <string name="txt_take_picture">Take a picture</string>
     <string name="ref_vehicle_storage_key">vehicle_photo</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
+    <string name="txt_vehicles">Vehicles</string>
+    <string name="txt_profile">Driver Profile</string>
 
 </resources>
