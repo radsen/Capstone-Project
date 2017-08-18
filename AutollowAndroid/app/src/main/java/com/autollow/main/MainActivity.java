@@ -9,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainView {
+
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     MainPresenterImpl<MainView> mainPresenterImpl;
 
@@ -50,6 +53,17 @@ public class MainActivity extends BaseActivity implements MainView {
         setUp();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START, true);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void setUp() {
 
         if (getSupportActionBar()!= null ) {
@@ -58,17 +72,19 @@ public class MainActivity extends BaseActivity implements MainView {
 
         mDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout,
-                R.string.drawer_open,
-                R.string.drawer_close)
+                0,
+                0)
         {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                Log.d(TAG, "onDrawerOpened");
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
+                Log.d(TAG, "onDrawerClosed");
             }
         };
 
