@@ -10,12 +10,14 @@ public class MainPresenter<V extends MainView> extends Presenter<V> implements M
 
     @Override
     public void onVehiclesClick() {
-
+        getView().closeNavMenu();
+        getView().showVehicles();
     }
 
     @Override
     public void onProfileClick() {
-
+        getView().closeNavMenu();
+        getView().showProfile();
     }
 
     @Override

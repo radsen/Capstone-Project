@@ -39,11 +39,11 @@ import butterknife.Unbinder;
  * Created by radsen on 7/10/17.
  */
 
-public class MainFragment extends BaseFragment implements ChildEventListener,
+public class VehicleFragment extends BaseFragment implements ChildEventListener,
         AddVehicleDialogFragment.AddVehicleDialogListener, VehicleAdapter.VehicleClickListener,
         IConstants {
 
-    public static final String TAG = MainFragment.class.getSimpleName();
+    public static final String TAG = VehicleFragment.class.getSimpleName();
 
     @BindView(R.id.rv_vehicles)
     RecyclerView rvVehicles;

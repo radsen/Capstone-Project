@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.autollow.R;
 import com.autollow.base.BaseActivity;
+import com.autollow.fragment.VehicleFragment;
+import com.autollow.profile.ProfileFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -107,6 +109,23 @@ public class MainActivity extends BaseActivity implements MainView {
                 Toast.makeText(this, "Sign in cancelled", Toast.LENGTH_SHORT).show();
                 finish();
             }
+        }
+    }
+
+    @Override
+    public void showVehicles() {
+        attachToActivity(R.id.frame, new VehicleFragment(), VehicleFragment.TAG);
+    }
+
+    @Override
+    public void showProfile() {
+        attachToActivity(R.id.frame, new ProfileFragment(), ProfileFragment.TAG);
+    }
+
+    @Override
+    public void closeNavMenu(){
+        if(mDrawerLayout != null){
+            mDrawerLayout.closeDrawer(GravityCompat.START, true);
         }
     }
 }

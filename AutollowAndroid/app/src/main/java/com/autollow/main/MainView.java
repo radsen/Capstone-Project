@@ -7,4 +7,11 @@ import com.autollow.base.BaseView;
  */
 
 public interface MainView extends BaseView {
+
+    void showVehicles();
+
+    void showProfile();
+
+    void closeNavMenu();
+
 }
