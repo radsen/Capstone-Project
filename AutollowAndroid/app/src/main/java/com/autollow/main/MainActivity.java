@@ -8,13 +8,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.autollow.R;
 import com.autollow.base.BaseActivity;
-import com.autollow.fragment.VehicleFragment;
+import com.autollow.vehicle.VehicleFragment;
 import com.autollow.profile.ProfileFragment;
 
 import butterknife.BindView;
@@ -30,6 +31,9 @@ public class MainActivity extends BaseActivity implements MainView {
     @BindView(R.id.nav_view_menu)
     NavigationView mNavigationView;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
@@ -38,6 +42,7 @@ public class MainActivity extends BaseActivity implements MainView {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
 
         mainPresenterImpl = new MainPresenter<>();
         mainPresenterImpl.onAttach(this);
@@ -46,8 +51,6 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     private void setUp() {
-
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.dwr_main);
 
         if (getSupportActionBar()!= null ) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

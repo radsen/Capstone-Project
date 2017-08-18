@@ -1,4 +1,4 @@
-package com.autollow.fragment;
+package com.autollow.vehicle;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -19,6 +19,7 @@ import com.autollow.activity.VehicleInfoActivity;
 import com.autollow.adapter.VehicleAdapter;
 import com.autollow.base.BaseFragment;
 import com.autollow.common.IConstants;
+import com.autollow.fragment.AddVehicleDialogFragment;
 import com.autollow.model.Registration;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
