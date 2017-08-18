@@ -82,6 +82,8 @@ public class VehicleFragment extends BaseFragment implements ChildEventListener,
             UUId = mFirebaseAuth.getCurrentUser().getUid();
         }
 
+        Log.d(TAG, "onActivityCreated - UUID: " + UUId);
+
         Uri uri = new Uri.Builder()
                 .appendPath(getString(R.string.ref_vehicles_user_key))
                 .appendPath(UUId).build();
