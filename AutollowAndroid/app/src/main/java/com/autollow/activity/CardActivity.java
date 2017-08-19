@@ -19,6 +19,7 @@ public class CardActivity extends BaseActivity implements IConstants {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_autollow);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
