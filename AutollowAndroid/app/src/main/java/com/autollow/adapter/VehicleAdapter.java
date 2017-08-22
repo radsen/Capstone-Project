@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.autollow.R;
 import com.autollow.model.Registration;
 import com.autollow.util.BindingUtils;
+import com.autollow.vehicle.VehiclePresenter;
+import com.autollow.vehicle.VehiclePresenterImpl;
 
 import java.util.List;
 
@@ -24,26 +26,22 @@ import butterknife.ButterKnife;
 
 public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHolder> {
 
-    private final Context mContext;
-    private final List<Registration> mVehicleList;
-    private final LayoutInflater inflater;
+    private Context mContext;
+    private List<Registration> mVehicleList;
+    private LayoutInflater inflater;
 
-    private VehicleClickListener mItemClickListener;
-
-    public interface VehicleClickListener {
-        void onClick(Registration registration, int position);
-
-        void onEditClicked(int position);
-    }
-
-    public interface VehicleInfoListener {
-        void onClick(Registration registration, int position);
-    }
+    private VehiclePresenter mPresenter;
 
     public VehicleAdapter(Context context, List<Registration> vehicleList){
         mContext = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mVehicleList = vehicleList;
+    }
+
+    public VehicleAdapter(Context context, VehiclePresenter presenter) {
+        mPresenter = presenter;
+        mContext = context;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -62,23 +60,22 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mItemClickListener.onEditClicked(position);
+//                mItemClickListener.onEditClicked(position);
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mItemClickListener.onClick(registration, position);
+                mPresenter.onVehicleClicked(position);
             }
         });
     }
 
-    public void setItemClickListener(VehicleClickListener mItemClickListener) {
-        this.mItemClickListener = mItemClickListener;
-    }
-
     @Override
     public int getItemCount() {
+        if(mVehicleList == null){
+            return 0;
+        }
         return mVehicleList.size();
     }
 
@@ -89,6 +86,11 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
 
     public void clear() {
         mVehicleList.clear();
+        notifyDataSetChanged();
+    }
+
+    public void setAdapter(List<Registration> adapter) {
+        this.mVehicleList = adapter;
         notifyDataSetChanged();
     }
 
