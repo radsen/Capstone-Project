@@ -30,7 +30,7 @@
 
     <string name="txt_add_vehicle_title">Add Vehicle</string>
     <string name="txt_doc_type">Document Type</string>
-    <string name="txt_issue_date">Issued Date</string>
+    <string name="txt_issue_date">Issue Date</string>
     <string name="txt_valid">Valid</string>
     <string name="txt_year">Year</string>
     <string name="txt_month">Month</string>
@@ -51,5 +51,8 @@
     <string name="drawer_close">Close Drawer</string>
     <string name="txt_vehicles">Vehicles</string>
     <string name="txt_profile">Driver Profile</string>
+    <string name="txt_driver_license">Driver License</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_category">Category</string>
 
 </resources>
