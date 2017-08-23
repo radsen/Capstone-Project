@@ -15,7 +15,9 @@ import com.autollow.util.BindingUtils;
 import com.autollow.vehicle.VehiclePresenter;
 import com.autollow.vehicle.VehiclePresenterImpl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,16 +29,12 @@ import butterknife.ButterKnife;
 public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<Registration> mVehicleList;
+    private Map<String, Registration> mVehicleMap;
     private LayoutInflater inflater;
 
     private VehiclePresenter mPresenter;
-
-    public VehicleAdapter(Context context, List<Registration> vehicleList){
-        mContext = context;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mVehicleList = vehicleList;
-    }
+    private List<String> mKeyList;
+    private List<Registration> mRegistrationList;
 
     public VehicleAdapter(Context context, VehiclePresenter presenter) {
         mPresenter = presenter;
@@ -52,7 +50,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        final Registration registration = mVehicleList.get(position);
+        final Registration registration = mRegistrationList.get(position);
         holder.brandTextView.setText(registration.getBrand());
         holder.modelTextView.setText(registration.getModel());
         BindingUtils.loadImage(holder.pictureImageView, registration.getPicture());
@@ -73,25 +71,26 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        if(mVehicleList == null){
+        if(mVehicleMap == null){
             return 0;
         }
-        return mVehicleList.size();
-    }
-
-    public void add(Registration registration) {
-        mVehicleList.add(registration);
-        notifyDataSetChanged();
+        return mVehicleMap.size();
     }
 
     public void clear() {
-        mVehicleList.clear();
+        mVehicleMap.clear();
         notifyDataSetChanged();
     }
 
-    public void setAdapter(List<Registration> adapter) {
-        this.mVehicleList = adapter;
+    public void setAdapter(Map<String, Registration> map) {
+        this.mVehicleMap = map;
+        mKeyList = new ArrayList<String>(mVehicleMap.keySet());
+        mRegistrationList = new ArrayList<Registration>(mVehicleMap.values());
         notifyDataSetChanged();
+    }
+
+    public String getVehicle(int position) {
+        return mKeyList.get(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

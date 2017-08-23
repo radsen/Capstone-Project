@@ -1,5 +1,7 @@
 package com.autollow.vehicle;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -12,13 +14,15 @@ import android.view.ViewGroup;
 
 import com.autollow.R;
 import com.autollow.adapter.VehicleAdapter;
+import com.autollow.base.BaseActivity;
 import com.autollow.base.BaseFragment;
 import com.autollow.common.IConstants;
 import com.autollow.fragment.AddVehicleDialogFragment;
+import com.autollow.fragment.CardFragment;
+import com.autollow.main.MainActivity;
 import com.autollow.model.Registration;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,9 +46,16 @@ public class VehicleFragment extends BaseFragment implements IVehicleView,
 
     private Unbinder unbinder;
     private VehicleAdapter mVehicleAdapter;
-
-    List<String> keys;
     private VehiclePresenter mPresenter;
+    private BaseActivity bActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof MainActivity){
+            bActivity = (BaseActivity)context;
+        }
+    }
 
     @Nullable
     @Override
@@ -58,8 +69,6 @@ public class VehicleFragment extends BaseFragment implements IVehicleView,
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        keys = new ArrayList<>();
 
         mPresenter = new VehiclePresenterImpl(this, new VehicleInteractorImpl(getContext()));
         mVehicleAdapter = new VehicleAdapter(getContext(), mPresenter);
@@ -80,9 +89,6 @@ public class VehicleFragment extends BaseFragment implements IVehicleView,
     public void onPause() {
         super.onPause();
         Log.d(TAG, "onPause");
-//        mVehicleAdapter.clear();
-//        keys.clear();
-//        mVehiclesUserRef.removeEventListener(this);
     }
 
     @Override
@@ -90,14 +96,6 @@ public class VehicleFragment extends BaseFragment implements IVehicleView,
         super.onDestroyView();
         unbinder.unbind();
     }
-
-//    @OnClick(R.id.fab_add)
-//    public void add(){
-////        Intent intent = new Intent(getContext(), CameraReaderActivity.class);
-////        startActivityForResult(intent, CameraReader.BARCODE_REQUEST);
-//
-//        showAddVehicle();
-//    }
 
     @Override
     public void onRegistered(Registration registration) {
@@ -107,15 +105,16 @@ public class VehicleFragment extends BaseFragment implements IVehicleView,
     }
 
     @Override
-    public void vehiclesLoaded(List<Registration> registrationList) {
+    public void vehiclesLoaded(Map<String, Registration> registrationList) {
         mVehicleAdapter.setAdapter(registrationList);
     }
 
     @Override
     public void onVehicleClicked(int position) {
-//        Intent intent = new Intent(getContext(), CardActivity.class);
-//        intent.putExtra(VEHICLE_ID_KEY, keys.get(position));
-//        startActivity(intent);
+        Log.d(TAG, "onVehicleClicked");
+        Bundle bundle = new Bundle();
+        bundle.putString(VEHICLE_ID_KEY, mVehicleAdapter.getVehicle(position));
+        bActivity.attachToActivity(R.id.frame, CardFragment.newInstance(bundle), CardFragment.TAG);
     }
 
     @Override

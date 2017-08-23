@@ -3,6 +3,7 @@ package com.autollow.vehicle;
 import com.autollow.model.Registration;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by radsen on 8/22/17.
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface IVehicleView {
 
-    void vehiclesLoaded(List<Registration> registrationList);
+    void vehiclesLoaded(Map<String, Registration> registrationList);
 
     void onVehicleClicked(int position);
 

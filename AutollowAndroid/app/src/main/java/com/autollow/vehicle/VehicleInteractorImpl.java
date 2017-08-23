@@ -7,15 +7,14 @@ import android.util.Log;
 import com.autollow.R;
 import com.autollow.model.Registration;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by radsen on 8/22/17.
@@ -28,18 +27,14 @@ public class VehicleInteractorImpl implements VehicleInteractor,
 
     private String UUId;
 
-    private final Context context;
-
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     DatabaseReference mVehiclesRef;
 
-    private List<Registration> mCurrentVehicleList = new ArrayList<>();
+    private Map<String, Registration> mCurrentVehicleList = new LinkedHashMap<>();
     private LoadListener listener;
 
     public VehicleInteractorImpl(Context context){
-
-        this.context = context;
 
         if(mAuth.getCurrentUser() != null){
             UUId = mAuth.getCurrentUser().getUid();
@@ -64,9 +59,10 @@ public class VehicleInteractorImpl implements VehicleInteractor,
         Log.d(TAG, "onDataChange");
         mCurrentVehicleList.clear();
 
-        for (DataSnapshot messagesSnapshot : dataSnapshot.getChildren()) {
-            Registration registration = messagesSnapshot.getValue(Registration.class);
-            mCurrentVehicleList.add(registration);
+        for (DataSnapshot vehicleSnapshot : dataSnapshot.getChildren()) {
+            Registration registration = vehicleSnapshot.getValue(Registration.class);
+            String key = vehicleSnapshot.getKey();
+            mCurrentVehicleList.put(key, registration);
         }
 
         listener.onLoaded(mCurrentVehicleList);
