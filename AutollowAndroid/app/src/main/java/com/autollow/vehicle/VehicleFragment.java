@@ -1,10 +1,10 @@
 package com.autollow.vehicle;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -77,7 +77,6 @@ public class VehicleFragment extends BaseFragment implements IVehicleView,
         rvVehicles.setAdapter(mVehicleAdapter);
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
@@ -120,10 +119,10 @@ public class VehicleFragment extends BaseFragment implements IVehicleView,
     @Override
     @OnClick(R.id.fab_add)
     public void showAddVehicle() {
-//        FragmentManager fm = getChildFragmentManager();
-//        AddVehicleDialogFragment addVehicleDialogFragment = AddVehicleDialogFragment
-//                .newInstance(getString(R.string.txt_add_vehicle_title));
-//        addVehicleDialogFragment.setAddVehicleListener(this);
-//        addVehicleDialogFragment.show(fm, AddVehicleDialogFragment.TAG);
+        FragmentManager fm = getChildFragmentManager();
+        AddVehicleDialogFragment addVehicleDialogFragment = AddVehicleDialogFragment
+                .newInstance(getString(R.string.txt_add_vehicle_title));
+        addVehicleDialogFragment.setAddVehicleListener(this);
+        addVehicleDialogFragment.show(fm, AddVehicleDialogFragment.TAG);
     }
 }

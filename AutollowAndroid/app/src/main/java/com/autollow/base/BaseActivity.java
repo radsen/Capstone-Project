@@ -45,6 +45,7 @@ public class BaseActivity extends AppCompatActivity implements FirebaseAuth.Auth
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(placeholderId, fragment, tag)
+                .addToBackStack(tag)
                 .commit();
     }
 
