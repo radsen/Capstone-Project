@@ -4,10 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.autollow.R;
 import com.autollow.profile.ProfilePresenter;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -52,11 +54,50 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
 
     public class ProfileViewHolder extends RecyclerView.ViewHolder implements ILicenseView {
 
+        @BindView(R.id.tv_driver_license_num)
+        TextView tvDriverLicenseNum;
+
+        @BindView(R.id.tv_name)
+        TextView tvName;
+
+        @BindView(R.id.tv_issued_date)
+        TextView tvIssueDate;
+
+        @BindView(R.id.tv_expiration_date)
+        TextView tvExpirationDate;
+
+        @BindView(R.id.tv_category)
+        TextView tvCategory;
 
 
         public ProfileViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+        }
+
+        @Override
+        public void setNumber(String number) {
+            tvDriverLicenseNum.setText(number);
+        }
+
+        @Override
+        public void setName(String name) {
+            tvName.setText(name);
+        }
+
+        @Override
+        public void setIssueDate(String issueDate) {
+            tvIssueDate.setText(issueDate);
+        }
+
+        @Override
+        public void setExpirationDate(String expirationDate) {
+            tvExpirationDate.setText(expirationDate);
+        }
+
+        @Override
+        public void setCategory(String category) {
+            tvCategory.setText(category);
         }
     }
 }

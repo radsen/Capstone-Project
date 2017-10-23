@@ -59,6 +59,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
             @Override
             public void onClick(View v) {
 //                mItemClickListener.onEditClicked(position);
+                mPresenter.onEditVehicle(position);
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {

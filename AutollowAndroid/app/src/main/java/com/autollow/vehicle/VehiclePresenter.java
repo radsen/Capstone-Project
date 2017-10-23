@@ -9,4 +9,6 @@ public interface VehiclePresenter {
     void onVehicleClicked(int position);
 
     void loadVehicles();
+
+    void onEditVehicle(int position);
 }

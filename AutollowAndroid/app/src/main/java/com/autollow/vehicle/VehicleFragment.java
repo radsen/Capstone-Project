@@ -19,6 +19,7 @@ import com.autollow.base.BaseFragment;
 import com.autollow.common.IConstants;
 import com.autollow.fragment.AddVehicleDialogFragment;
 import com.autollow.fragment.CardFragment;
+import com.autollow.fragment.VehicleInfoFragment;
 import com.autollow.main.MainActivity;
 import com.autollow.model.Registration;
 
@@ -124,5 +125,14 @@ public class VehicleFragment extends BaseFragment implements IVehicleView,
                 .newInstance(getString(R.string.txt_add_vehicle_title));
         addVehicleDialogFragment.setAddVehicleListener(this);
         addVehicleDialogFragment.show(fm, AddVehicleDialogFragment.TAG);
+    }
+
+    @Override
+    public void onEditClicked(int position) {
+        Log.d(TAG, "onEditClicked");
+        Bundle bundle = new Bundle();
+        bundle.putString(VEHICLE_ID_KEY, mVehicleAdapter.getVehicle(position));
+        bActivity.attachToActivity(R.id.frame, VehicleInfoFragment.newInstance(bundle),
+                VehicleInfoFragment.TAG);
     }
 }

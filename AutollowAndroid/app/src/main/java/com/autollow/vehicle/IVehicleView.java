@@ -17,4 +17,5 @@ public interface IVehicleView {
 
     void showAddVehicle();
 
+    void onEditClicked(int position);
 }

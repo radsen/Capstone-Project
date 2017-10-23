@@ -5,4 +5,15 @@ package com.autollow.adapter;
  */
 
 interface ILicenseView {
+
+    void setNumber(String number);
+
+    void setName(String name);
+
+    void setIssueDate(String issueDate);
+
+    void setExpirationDate(String expirationDate);
+
+    void setCategory(String category);
+
 }

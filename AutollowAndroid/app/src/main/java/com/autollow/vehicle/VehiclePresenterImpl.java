@@ -34,6 +34,11 @@ public class VehiclePresenterImpl implements VehiclePresenter, VehicleInteractor
     }
 
     @Override
+    public void onEditVehicle(int position) {
+        vehicleView.onEditClicked(position);
+    }
+
+    @Override
     public void onLoaded(Map<String, Registration> mCurrentVehicleList) {
         if(vehicleView != null){
             vehicleView.vehiclesLoaded(mCurrentVehicleList);
